@@ -8,3 +8,12 @@ const initialState = {
     firstName: "",
     todo: [],
 };
+
+//ACTION CREATOR
+const orderCake = () => {
+    return {
+        type: "dudu"
+    };
+};
+
+//REDUCER
