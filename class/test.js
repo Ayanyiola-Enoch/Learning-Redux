@@ -4,10 +4,12 @@ const createStore = redux.createStore;
 //INITIAL STATE
 const initialState = {
     cake: 10,
+    eggBuns:15,
     email: "",
     firstName: "",
     todo: [],
 };
+
 
 //ACTION CREATOR
 const orderCake = () => {
@@ -18,8 +20,8 @@ const orderCake = () => {
 const orderCake2 = () => {
     return {
         type: "move"
-    }
-}
+    };
+};
 
 
 
