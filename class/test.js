@@ -5,21 +5,27 @@ const createStore = redux.createStore;
 const initialState = {
     cake: 10,
     eggBuns:15,
-    email: "",
-    firstName: "",
-    todo: [],
+    // email: "",
+    // firstName: "",
+    // todo: [],
 };
 
 
 //ACTION CREATOR
-const orderCake = () => {
+const orderCake = (enoch) => {
     return {
-        type: "enter"
+        type: "cake",
+        enoch
     };
 };
-const orderCake2 = () => {
+const restockCake = () => {
     return {
-        type: "move"
+        type: "restockCake"
+    };
+};
+const eggBuns = () => {
+    return {
+        type: "eggBuns"
     };
 };
 
@@ -28,18 +34,24 @@ const orderCake2 = () => {
 //REDUCER
 const cakeReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "enter":
+        case "cake":
             {/*FIRST CASE- REMOVING CAKE*/ }
             return {
                 ...state,
-                cake: state.cake - 1
+                cake: state.cake - action.enoch
             };
-        case "move":
+        case "restockCake":
             {/*FIRST CASE- ADD CAKE*/ }
             return {
                 ...state,
                 cake: state.cake + 1
             }
+            case "eggBuns":
+                return{
+                    ...state,
+                    eggBuns:state.eggBuns - 1
+
+                }
         default:
             return state;
     };
@@ -54,8 +66,7 @@ store.subscribe(() => {
     console.log('for checking', store.getState());
 })
 
-store.dispatch(orderCake());
-store.dispatch(orderCake());
-store.dispatch(orderCake());
+store.dispatch(orderCake(5));
+store.dispatch(restockCake());
 
-store.dispatch(orderCake2());
+store.dispatch(eggBuns());
